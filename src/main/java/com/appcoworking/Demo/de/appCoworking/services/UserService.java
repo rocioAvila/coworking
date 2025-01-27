@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.beans.Transient;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -15,6 +16,17 @@ public class UserService {
 
     @Transactional
     public User createUser(User user){
+        if(user.getNameUser() != null){
+            user.setNameUser(user.getNameUser().toLowerCase());
+        }
         return userR.save(user);
+    }
+
+    public List<User> allUsers(){
+        return userR.findAll();
+    }
+
+    public List<User> findUserName(String name){
+        return userR.findUserForName(name);
     }
 }

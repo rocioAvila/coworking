@@ -8,10 +8,11 @@ import java.time.LocalDate;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idUser;
+    private Long idUser;
     private String rolUser = "client";
     private String nameUser;
     private String lastNameUser;
+    private String password;
 
     @Temporal(TemporalType.DATE)
     private LocalDate birthday;
@@ -23,18 +24,19 @@ public class User {
     public User() {
     }
 
-    public User(String idUser, String rolUser, String nameUser, String lastNameUser, LocalDate birthday, String dni, String email, String phoneNumber) {
+    public User(Long idUser, String rolUser, String nameUser, String lastNameUser, String password, LocalDate birthday, String dni, String email, String phoneNumber) {
         this.idUser = idUser;
         this.rolUser = rolUser;
         this.nameUser = nameUser;
         this.lastNameUser = lastNameUser;
+        this.password = password;
         this.birthday = birthday;
         this.dni = dni;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
-    public String getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
@@ -49,6 +51,8 @@ public class User {
     public String getLastNameUser() {
         return lastNameUser;
     }
+
+    public String getPassword() { return password; }
 
     public LocalDate getBirthday() {
         return birthday;
@@ -66,7 +70,7 @@ public class User {
         return phoneNumber;
     }
 
-    public void setIdUser(String idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
@@ -81,6 +85,8 @@ public class User {
     public void setLastNameUser(String lastNameUser) {
         this.lastNameUser = lastNameUser;
     }
+
+    public void setPassword(String password) { this.password = password; }
 
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
